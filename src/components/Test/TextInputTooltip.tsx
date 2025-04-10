@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { IconInfoCircle } from '@tabler/icons-react';
 import { Center, Text, TextInput, Tooltip, Select, Checkbox, Group } from '@mantine/core';
 

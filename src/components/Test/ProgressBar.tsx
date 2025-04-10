@@ -6,7 +6,7 @@ export function ProgressBar() {
       <Stepper.Step label="Step 1" description="Set up" />
       <Stepper.Step label="Step 2" description="Components" />
       <Stepper.Step label="Step 3" description="Additives" />
-      <Stepper.Step label="Step 3" description="Primary Packaging" />
+      <Stepper.Step label="Step 4" description="Primary Packaging" />
     </Stepper>
   );
 }
