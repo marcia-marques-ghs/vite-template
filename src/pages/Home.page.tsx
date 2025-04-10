@@ -7,10 +7,10 @@ import { ProgressBar } from '../components/Test/ProgressBar';
 export function HomePage() {
   return (
     <>
-      <div style={{ margin: '5em' }}>
+      <div>
+        <ProgressBar />
         <Welcome />
         <ColorSchemeToggle />
-        <ProgressBar />
         <TextInputTooltip />
       </div>
     </>

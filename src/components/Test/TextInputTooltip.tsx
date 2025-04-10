@@ -1,6 +1,21 @@
 import { useState } from 'react';
 import { IconInfoCircle } from '@tabler/icons-react';
-import { Center, Text, TextInput, Tooltip, Select } from '@mantine/core';
+import { Center, Text, TextInput, Tooltip, Select, Checkbox, Group } from '@mantine/core';
+
+function CheckboxQuestion() {
+    return (
+      <Checkbox.Group
+        defaultValue={['ownCultivation']}
+        label="What is this substrate used for?"
+        withAsterisk
+      >
+        <Group mt="xs">
+          <Checkbox value="ownCultivation" label="My own cultivation" />
+          <Checkbox value="purchasedStartingMaterials" label="Purchased starting materials" />
+        </Group>
+      </Checkbox.Group>
+    );
+  }
 
 function TooltipIcon() {
   const rightSection = (
@@ -46,6 +61,7 @@ function Dropdown() {
 export function TextInputTooltip() {
   return (
     <>
+      <CheckboxQuestion />
       <TooltipIcon />
       <Dropdown />
     </>
