@@ -15,11 +15,10 @@ interface InputFieldProps {
   mt?: MantineSize;
   onChange?: (value: any) => void;
   value?: any;
+  unit?: string; // Added unit prop
 }
 
-
-//define form input fields from mantine ui library
-export function InputField({
+function InputField({
   label,
   placeholder,
   tooltipLabel,
@@ -32,6 +31,7 @@ export function InputField({
   mt,
   onChange,
   value,
+  unit,
 }: InputFieldProps) {
   const tooltip = tooltipLabel ? (
     <Tooltip
@@ -48,7 +48,14 @@ export function InputField({
     </Tooltip>
   ) : null;
 
-  const rightSection = tooltip;
+  const rightSection = tooltip ? (
+    <Group style={{ gap: '5px' }} align="center">
+      {unit && <Text size="sm" color="dimmed">{unit}</Text>}
+      {tooltip}
+    </Group>
+  ) : (
+    unit && <Text size="sm" color="dimmed" mr="xs">{unit}</Text>
+  );
 
   if (checkboxOptions && checkboxOptions.length > 0) {
     return (
@@ -78,7 +85,8 @@ export function InputField({
         allowDeselect={allowDeselect}
         mt={mt}
         onChange={onChange}
-        value={value as string}
+        value={value as string | null}
+        rightSection={rightSection} // Apply unit to Select as well if needed
       />
     );
   }
@@ -95,12 +103,21 @@ export function InputField({
       value={value as string}
     />
   );
-}
+};
 
-//export function with all needed components for substrate form, using props to change the label names
 export function FormComponent() {
   const [substrateUsage, setSubstrateUsage] = useState<string[]>(['ownCultivation']);
   const [substrateName, setSubstrateName] = useState('');
+  const [peatCContent, setPeatCContent] = useState('');
+  const [nContent, setNContent] = useState('');
+  const [pContent, setPContent] = useState('');
+  const [kContent, setKContent] = useState('');
+  const [limestoneContent, setLimestoneContent] = useState('');
+  const [dolomiteContent, setDolomiteContent] = useState('');
+  const [ureaContent, setUreaContent] = useState('');
+  const [moistureContent, setMoistureContent] = useState('');
+  const [ph, setPh] = useState('');
+  const [cec, setCec] = useState('');
   const [supplier, setSupplier] = useState<string | null>(null);
 
   return (
@@ -126,6 +143,96 @@ export function FormComponent() {
       />
 
       <InputField
+        label="Peat C-content"
+        placeholder="Enter a value in kg/m3"
+        tooltipLabel="Enter the Peat C-content (kg/m3)"
+        mt="md"
+        value={peatCContent}
+        onChange={setPeatCContent}
+      />
+
+<InputField
+        label="N-content"
+        placeholder="Enter a value in kg/m3"
+        tooltipLabel="Enter the N-content (kg/m3)"
+        mt="md"
+        value={nContent}
+        onChange={setNContent}
+      />
+
+      <InputField
+        label="P-content"
+        placeholder="Enter a value in kg/m3"
+        tooltipLabel="Enter the P-content (kg/m3)"
+        mt="md"
+        value={pContent}
+        onChange={setPContent}
+      />
+
+      <InputField
+        label="K-content"
+        placeholder="Enter a value in kg/m3"
+        tooltipLabel="Enter the K-content (kg/m3)"
+        mt="md"
+        value={kContent}
+        onChange={setKContent}
+      />
+
+      <InputField
+        label="Limestone content"
+        placeholder="Enter a value in kg/m3"
+        tooltipLabel="Enter the Limestone content (kg/m3)"
+        mt="md"
+        value={limestoneContent}
+        onChange={setLimestoneContent}
+      />
+
+      <InputField
+        label="Dolomite content"
+        placeholder="Enter a value in kg/m3"
+        tooltipLabel="Enter the Dolomite content (kg/m3)"
+        mt="md"
+        value={dolomiteContent}
+        onChange={setDolomiteContent}
+      />
+
+      <InputField
+        label="Urea content"
+        placeholder="Enter a value in kg/m3"
+        tooltipLabel="Enter the Urea content (kg/m3)"
+        mt="md"
+        value={ureaContent}
+        onChange={setUreaContent}
+      />
+
+      <InputField
+        label="Moisture content"
+        placeholder="Enter a value in liter/m3"
+        tooltipLabel="Enter the Moisture content (liter/m3)"
+        mt="md"
+        value={moistureContent}
+        onChange={setMoistureContent}
+      />
+
+      <InputField
+        label="pH"
+        placeholder="Enter a pH value"
+        tooltipLabel="Enter the pH value"
+        mt="md"
+        value={ph}
+        onChange={setPh}
+      />
+
+      <InputField
+        label="CEC"
+        placeholder="Enter a value in cmol/kg"
+        tooltipLabel="Enter the CEC value (cmol/kg)"
+        mt="md"
+        value={cec}
+        onChange={setCec}
+      />
+
+      <InputField
         label="Supplier"
         placeholder="Choose a supplier"
         data={['Supplier 1', 'Supplier 2', 'Supplier 3', 'Supplier 4']}
@@ -134,8 +241,7 @@ export function FormComponent() {
         onChange={setSupplier}
         value={supplier}
       />
-
-      {/* You can add more InputField components here for other form fields */}
     </>
   );
 }
+  
