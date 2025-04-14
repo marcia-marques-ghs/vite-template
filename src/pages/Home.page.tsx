@@ -2,6 +2,7 @@ import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeTo
 import { Welcome } from '../components/Welcome/Welcome';
 import { FormComponent } from '../components/Test/TextInputTooltip';
 import { ProgressBar } from '../components/Test/ProgressBar';
+import Subforms from '@/components/Test/Subforms';
 
 
 export function HomePage() {
@@ -12,6 +13,7 @@ export function HomePage() {
         <Welcome />
         <ColorSchemeToggle />
         <FormComponent />
+        <Subforms />
       </div>
     </>
   );
